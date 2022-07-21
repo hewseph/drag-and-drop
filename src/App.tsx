@@ -4,17 +4,10 @@ import styled from 'styled-components'
 import { DraggableWrapper } from './DraggableWrapper'
 
 const Item = ({ text, draggable, handleClick, clicked }: any) => {
-  // console.log({ clicked })
   const handleCheckClick = (e: any) => {
-    console.log("here")
     handleClick && handleClick()
-    if (draggable) {
-      console.log("this")
-      e.stopPropagation();
-      e.preventDefault();
-      return false;
-    }
   }
+
   return (
     <StyledItem>
       {text}
@@ -22,7 +15,7 @@ const Item = ({ text, draggable, handleClick, clicked }: any) => {
         <button
           style={{
             zIndex: 10, backgroundColor: clicked ? "skyblue" : "yellow",
-            opacity: draggable ? 0 : 1
+            opacity: draggable ? 0 : 1 // this makes the button invisible on the dragable copy
           }}
           onClick={handleCheckClick}>Checkbox</button>
       </div>
