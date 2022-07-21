@@ -6,16 +6,12 @@ export const useDraggable = ({
     const nodeRef = useRef(null);
     const [entered, setInternalEntered] = useState(false);
 
-    const handleStart = () => {
-        console.log("starting");
-    };
+    const handleStart = () => {/** noop */ }
 
     const handleDrag = (e) => {
         setDragging(true);
-        console.log("dragging");
         const { clientX, clientY } = e;
         const container = targetContainer.current?.getBoundingClientRect();
-        console.log(container);
         if (container &&
             clientX > container.x &&
             clientX < container.x + container.width &&
@@ -30,7 +26,6 @@ export const useDraggable = ({
     };
 
     const handleStop = () => {
-        console.log("stopping");
         if (entered) {
             onDrop && onDrop();
         }
